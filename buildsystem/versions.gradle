@@ -1,0 +1,34 @@
+ext.configuration = [
+        applicationId : "com.elkin.challengeinstaleap",
+        compileSdk    : 33,
+        minSdk        : 24,
+        targetSdk     : 33,
+
+        versionCode   : 1,
+        versionName   : "1.0"
+]
+
+ext.libraries = [
+        ktx                 : "1.10.0",
+        lifecycle_runtime   : "2.6.1",
+        activity_compose    : "1.7.1",
+        compose_ui_version  : "1.2.0",
+        material            : "1.4.3",
+
+        //Testing
+        testImplJunit       : "4.13.2",
+        andTestImplJunit    : "1.1.5",
+        andTestImplEspresso : "3.5.1",
+
+        //Navigation
+        navigation          : "2.5.3",
+
+        //Lifecycle
+        lifecycle_version   : "2.6.1",
+
+        //Glide
+        glide               : "1.0.0-alpha.1",
+
+        //Hilt
+        hilt                : "2.44",
+]
