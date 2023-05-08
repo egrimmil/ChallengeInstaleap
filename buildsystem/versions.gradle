@@ -31,4 +31,12 @@ ext.libraries = [
 
         //Hilt
         hilt                : "2.44",
+        hilt_navigation     : "1.0.0",
+
+        //OKHttp
+        okhttp              : "4.9.3",
+        okhttp_intercept    : "5.0.0-alpha.11",
+
+        //Retrofit
+        retrofit             : "2.9.0"
 ]

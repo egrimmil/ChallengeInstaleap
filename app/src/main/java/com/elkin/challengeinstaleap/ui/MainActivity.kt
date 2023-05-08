@@ -17,7 +17,9 @@ import com.elkin.challengeinstaleap.presentation.dashboard.DashboardScreen
 import com.elkin.challengeinstaleap.presentation.splash.SplashScreen
 import com.elkin.challengeinstaleap.ui.navigation.Route
 import com.elkin.challengeinstaleap.ui.theme.ChallengeInstaleapTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

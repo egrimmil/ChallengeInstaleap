@@ -77,6 +77,14 @@ dependencies {
     //Hilt
     implementation "com.google.dagger:hilt-android:$libraries.hilt"
     kapt "com.google.dagger:hilt-android-compiler:$libraries.hilt"
+    implementation "androidx.hilt:hilt-navigation-compose:$libraries.hilt_navigation"
+    //OkHttp
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:$libraries.okhttp"))
+    implementation "com.squareup.okhttp3:okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$libraries.okhttp_intercept"
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$libraries.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$libraries.retrofit"
 }
 
 kapt {
