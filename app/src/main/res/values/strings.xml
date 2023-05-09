@@ -3,4 +3,10 @@
     <!-- Errors -->
     <string name="error_network">Por favor revisa tu conexión de internet.</string>
     <string name="error_server">No se pudo completar la tarea, por favor intenta más tarde.</string>
+    <!-- Commons -->
+    <string name="movies">Películas</string>
+    <string name="tvs">Series de TV</string>
+    <string name="movie">Película</string>
+    <string name="tv">Serie de TV</string>
+    <string name="info">Información</string>
 </resources>

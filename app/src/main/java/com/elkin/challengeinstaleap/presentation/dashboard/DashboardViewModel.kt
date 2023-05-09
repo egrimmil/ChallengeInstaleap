@@ -11,6 +11,7 @@ import com.elkin.challengeinstaleap.R
 import com.elkin.challengeinstaleap.core.util.Resource
 import com.elkin.challengeinstaleap.core.util.UiEvent
 import com.elkin.challengeinstaleap.domain.use_case.DashboardUseCase
+import com.elkin.challengeinstaleap.ui.navigation.Route.DETAIL_MEDIA
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -36,8 +37,8 @@ class DashboardViewModel @Inject constructor(
         onEvent(DashboardEvents.GetTrending)
     }
 
-    private fun onEvent(events: DashboardEvents) {
-        when (events) {
+    fun onEvent(event: DashboardEvents) {
+        when (event) {
             is DashboardEvents.GetTrending -> {
                 viewModelScope.launch {
                     val resp = dashboardUseCase.getTrending()
@@ -46,18 +47,25 @@ class DashboardViewModel @Inject constructor(
                         when (trends) {
                             is Resource.Loading -> state = state.copy(isLoading = true)
                             is Resource.Error -> {
-                                state = trends.message?.let { it }
-                                    ?.let {
-                                        state.copy(
-                                            isLoading = false,
-                                            isError = true,
-                                            message = it
-                                        )
-                                    }!!
+                                state = trends.message?.let {
+                                    state.copy(
+                                        isLoading = false,
+                                        isError = true,
+                                        message = it
+                                    )
+                                }!!
                             }
                             is Resource.Success -> {
                                 state = if (!trends.data.isNullOrEmpty()) {
-                                    state.copy(isLoading = false, trends = trends.data)
+                                    val movies = trends.data.filter { it.media_type == "movie" }
+                                    val tvs = trends.data.filter { it.media_type == "tv" }
+                                    state.copy(
+                                        isLoading = false,
+                                        trends = trends.data,
+                                        featureItem = trends.data[0],
+                                        movies = movies,
+                                        tvs = tvs
+                                    )
                                 } else {
                                     state.copy(
                                         isLoading = false,
@@ -72,7 +80,18 @@ class DashboardViewModel @Inject constructor(
                     }
                 }
             }
-            is DashboardEvents.OnNavigateDetail -> {}
+            is DashboardEvents.OnNavigateDetail -> {
+                viewModelScope.launch {
+                    _uiEvent.send(
+                        UiEvent.Navigate(
+                            DETAIL_MEDIA.replace(
+                                "{id}",
+                                event.idMedia.toString()
+                            )
+                        )
+                    )
+                }
+            }
         }
     }
 }

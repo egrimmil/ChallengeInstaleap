@@ -60,6 +60,7 @@ dependencies {
     implementation "androidx.compose.ui:ui:$libraries.compose_ui_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$libraries.compose_ui_version"
     implementation "androidx.compose.material:material:$libraries.material"
+    implementation "androidx.constraintlayout:constraintlayout-compose:$libraries.constraint_compose"
     testImplementation "junit:junit:$libraries.testImplJunit"
     androidTestImplementation "androidx.test.ext:junit:$libraries.andTestImplJunit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$libraries.andTestImplEspresso"
@@ -73,7 +74,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$libraries.lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$libraries.lifecycle_version"
     //Glide
-    implementation "com.github.bumptech.glide:compose:$libraries.glide"
+    implementation "com.github.skydoves:landscapist-glide:$libraries.glide"
     //Hilt
     implementation "com.google.dagger:hilt-android:$libraries.hilt"
     kapt "com.google.dagger:hilt-android-compiler:$libraries.hilt"

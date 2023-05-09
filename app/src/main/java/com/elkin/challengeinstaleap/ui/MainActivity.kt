@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.elkin.challengeinstaleap.presentation.dashboard.DashboardScreen
+import com.elkin.challengeinstaleap.presentation.detail.DetailScreen
 import com.elkin.challengeinstaleap.presentation.splash.SplashScreen
 import com.elkin.challengeinstaleap.ui.navigation.Route
 import com.elkin.challengeinstaleap.ui.theme.ChallengeInstaleapTheme
@@ -45,6 +46,9 @@ class MainActivity : ComponentActivity() {
                             }
                             composable(Route.DASHBOARD){
                                 DashboardScreen(navController = navController)
+                            }
+                            composable(Route.DETAIL_MEDIA){
+                                DetailScreen(navController = navController)
                             }
                         }
                     }
