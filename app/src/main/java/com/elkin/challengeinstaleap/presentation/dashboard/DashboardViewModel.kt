@@ -1,6 +1,7 @@
 package com.elkin.challengeinstaleap.presentation.dashboard
 
 import android.app.Application
+import android.net.Uri
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -81,12 +82,13 @@ class DashboardViewModel @Inject constructor(
                 }
             }
             is DashboardEvents.OnNavigateDetail -> {
+                Log.e("itemDetail", Gson().toJson(event.item))
                 viewModelScope.launch {
                     _uiEvent.send(
                         UiEvent.Navigate(
                             DETAIL_MEDIA.replace(
-                                "{id}",
-                                event.idMedia.toString()
+                                "{item}",
+                                Uri.encode(Gson().toJson(event.item))
                             )
                         )
                     )

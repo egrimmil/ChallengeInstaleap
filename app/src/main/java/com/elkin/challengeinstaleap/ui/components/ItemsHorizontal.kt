@@ -13,7 +13,7 @@ import com.elkin.challengeinstaleap.domain.model.Media
 @Composable
 fun ItemsHorizontal(
     items: List<Media> = emptyList(),
-    onNavigateDetail: (Int) -> Unit?
+    onNavigateDetail: (Media) -> Unit?
 ) {
     when {
         items.isNotEmpty() -> {
@@ -21,7 +21,7 @@ fun ItemsHorizontal(
                 items(items.size) {
                     ItemMedia(
                         imgItem = items[it].poster_path,
-                        idItem = items[it].id,
+                        item = items[it],
                         modifier = Modifier
                             .height(dimensionResource(id = R.dimen.dp_180))
                             .width(dimensionResource(id = R.dimen.dp_120)),

@@ -19,7 +19,7 @@ import com.elkin.challengeinstaleap.ui.theme.fonts
 fun SectionCategories(
     title: String = "",
     items: List<Media> = emptyList(),
-    onNavigateDetail: (Int) -> Unit?
+    onNavigateDetail: (Media) -> Unit?
 ) {
     Column(
         modifier = Modifier

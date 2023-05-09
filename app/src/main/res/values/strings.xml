@@ -9,4 +9,6 @@
     <string name="movie">Película</string>
     <string name="tv">Serie de TV</string>
     <string name="info">Información</string>
+    <string name="season">Temporada</string>
+    <string name="seasons">Temporadas</string>
 </resources>

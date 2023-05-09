@@ -20,9 +20,11 @@ class DashboardUseCase @Inject constructor(
 
         when (val resp = dashboardRepository.getTrending()) {
             is ResponseWrapper.NetworkError -> {
+                emit(Resource.Loading(loading = false))
                 emit(Resource.Error(message = resp.message))
             }
             is ResponseWrapper.ServerError -> {
+                emit(Resource.Loading(loading = false))
                 emit(Resource.Error(message = resp.message))
             }
             is ResponseWrapper.Success -> {

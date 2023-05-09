@@ -10,14 +10,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.elkin.challengeinstaleap.domain.model.Media
 import com.elkin.challengeinstaleap.presentation.dashboard.DashboardScreen
 import com.elkin.challengeinstaleap.presentation.detail.DetailScreen
 import com.elkin.challengeinstaleap.presentation.splash.SplashScreen
 import com.elkin.challengeinstaleap.ui.navigation.Route
 import com.elkin.challengeinstaleap.ui.theme.ChallengeInstaleapTheme
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,14 +45,23 @@ class MainActivity : ComponentActivity() {
                                 .fillMaxSize()
                                 .padding(padding)
                         ) {
-                            composable(Route.SPLASH){
+                            composable(Route.SPLASH) {
                                 SplashScreen(navController = navController)
                             }
-                            composable(Route.DASHBOARD){
+                            composable(Route.DASHBOARD) {
                                 DashboardScreen(navController = navController)
                             }
-                            composable(Route.DETAIL_MEDIA){
-                                DetailScreen(navController = navController)
+                            composable(Route.DETAIL_MEDIA) { backStackEntry ->
+                                backStackEntry.arguments?.getString("item")
+                                    ?.let { jsonString ->
+                                        DetailScreen(
+                                            Gson().fromJson(
+                                                jsonString,
+                                                Media::class.java
+                                            ),
+                                            navController = navController
+                                        )
+                                    }
                             }
                         }
                     }

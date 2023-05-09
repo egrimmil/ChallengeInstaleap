@@ -8,6 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import com.elkin.challengeinstaleap.R
+import com.elkin.challengeinstaleap.domain.model.Media
 import com.skydoves.landscapist.ImageOptions
 import com.skydoves.landscapist.glide.GlideImage
 
@@ -15,15 +16,15 @@ import com.skydoves.landscapist.glide.GlideImage
 fun ItemMedia(
     modifier: Modifier = Modifier,
     imgItem: String,
-    idItem: Int,
+    item: Media = Media(),
     enableClick: Boolean = true,
-    onNavigateDetail: (Int) -> Unit?
+    onNavigateDetail: (Media) -> Unit?
 ) {
     Box(
         modifier = modifier
             .clickable(
                 enableClick,
-                onClick = { onNavigateDetail(idItem) }
+                onClick = { onNavigateDetail(item) }
             )
             .padding(dimensionResource(id = R.dimen.dp_4))
     ) {
@@ -31,7 +32,7 @@ fun ItemMedia(
             imageModel = { imgItem },
             imageOptions = ImageOptions(
                 contentScale = ContentScale.FillBounds,
-                contentDescription = "$idItem"
+                contentDescription = "${item.id}"
             )
         )
     }

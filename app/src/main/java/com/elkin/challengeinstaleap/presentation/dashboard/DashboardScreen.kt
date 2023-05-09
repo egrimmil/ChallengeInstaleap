@@ -42,14 +42,14 @@ fun DashboardScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentHeight()
-            ) { idMedia ->
-                viewModel.onEvent(DashboardEvents.OnNavigateDetail(idMedia))
+            ) { media ->
+                viewModel.onEvent(DashboardEvents.OnNavigateDetail(media))
             }
             SectionCategories(
                 title = stringResource(id = R.string.movies),
                 items = state.movies
-            ) { id ->
-                viewModel.onEvent(DashboardEvents.OnNavigateDetail(id))
+            ) { item ->
+                viewModel.onEvent(DashboardEvents.OnNavigateDetail(item))
             }
             SectionCategories(
                 title = stringResource(id = R.string.tvs),

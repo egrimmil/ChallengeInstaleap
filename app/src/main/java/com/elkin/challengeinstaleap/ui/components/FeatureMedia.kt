@@ -28,12 +28,12 @@ import com.elkin.challengeinstaleap.ui.theme.fonts
 fun FeatureMedia(
     modifier: Modifier = Modifier,
     infoMedia: Media,
-    onNavigateDetail: (Int) -> Unit?
+    onNavigateDetail: (Media) -> Unit?
 ) {
     Surface(
         modifier = modifier
             .fillMaxWidth(),
-        onClick = { onNavigateDetail(infoMedia.id) }
+        onClick = { onNavigateDetail(infoMedia) }
     ) {
         ConstraintLayout(
             modifier = modifier
@@ -58,7 +58,7 @@ fun FeatureMedia(
             ) {
                 ItemMedia(
                     imgItem = infoMedia.poster_path,
-                    idItem = infoMedia.id,
+                    item = infoMedia,
                     modifier = modifier,
                     onNavigateDetail = onNavigateDetail
                 )
