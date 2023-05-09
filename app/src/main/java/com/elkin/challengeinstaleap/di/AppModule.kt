@@ -5,8 +5,10 @@ import com.elkin.challengeinstaleap.data.remote.service.ApiInterceptor
 import com.elkin.challengeinstaleap.data.remote.service.ApiService
 import com.elkin.challengeinstaleap.data.repository.DashboardRepositoryImpl
 import com.elkin.challengeinstaleap.data.repository.DetailMediaRepositoryImpl
+import com.elkin.challengeinstaleap.data.repository.ListMediaRepositoryImpl
 import com.elkin.challengeinstaleap.domain.repository.DashboardRepository
 import com.elkin.challengeinstaleap.domain.repository.DetailMediaRepository
+import com.elkin.challengeinstaleap.domain.repository.ListMediaRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -58,5 +60,13 @@ object AppModule {
         apiService: ApiService
     ): DetailMediaRepository{
         return DetailMediaRepositoryImpl(apiService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideListMediaRepository(
+        apiService: ApiService
+    ): ListMediaRepository{
+        return ListMediaRepositoryImpl(apiService)
     }
 }

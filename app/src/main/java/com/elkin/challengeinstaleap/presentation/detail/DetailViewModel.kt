@@ -34,6 +34,11 @@ class DetailViewModel @Inject constructor(
                 Log.e("itemDetailVM", Gson().toJson(events.item))
                 getDetail(events.item)
             }
+            is DetailEvents.OnNavigateUp -> {
+                viewModelScope.launch {
+                    _uiEvent.send(UiEvent.NavigateUp)
+                }
+            }
         }
     }
 

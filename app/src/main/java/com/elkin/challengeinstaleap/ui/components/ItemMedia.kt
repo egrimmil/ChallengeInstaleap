@@ -18,6 +18,7 @@ fun ItemMedia(
     imgItem: String,
     item: Media = Media(),
     enableClick: Boolean = true,
+    scale: ContentScale = ContentScale.FillBounds,
     onNavigateDetail: (Media) -> Unit?
 ) {
     Box(
@@ -31,7 +32,7 @@ fun ItemMedia(
         GlideImage(
             imageModel = { imgItem },
             imageOptions = ImageOptions(
-                contentScale = ContentScale.FillBounds,
+                contentScale = scale,
                 contentDescription = "${item.id}"
             )
         )

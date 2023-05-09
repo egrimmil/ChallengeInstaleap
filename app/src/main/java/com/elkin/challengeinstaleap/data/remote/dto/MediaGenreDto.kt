@@ -8,3 +8,8 @@ data class MediaGenreDto(
     @SerializedName("name")
     var name: String = "",
 )
+
+data class ListGenresMediaDto(
+    @SerializedName("genres")
+    var genres: List<MediaGenreDto> = emptyList(),
+)

@@ -28,6 +28,7 @@ import com.elkin.challengeinstaleap.ui.theme.fonts
 fun FeatureMedia(
     modifier: Modifier = Modifier,
     infoMedia: Media,
+    typeVisible: Boolean = true,
     onNavigateDetail: (Media) -> Unit?
 ) {
     Surface(
@@ -38,7 +39,7 @@ fun FeatureMedia(
         ConstraintLayout(
             modifier = modifier
                 .fillMaxWidth()
-                .height(550.dp)
+                .height(500.dp)
         ) {
             val (imgMedia, contentMedia) = createRefs()
 
@@ -78,18 +79,20 @@ fun FeatureMedia(
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.Bottom
             ) {
-                Text(
-                    text = if (infoMedia.media_type.lowercase() == "movie")
-                        stringResource(id = R.string.movie).uppercase()
-                    else
-                        stringResource(id = R.string.tv).uppercase(),
-                    modifier = Modifier
-                        .padding(dimensionResource(id = R.dimen.dp_8)),
-                    textAlign = TextAlign.Center,
-                    fontFamily = fonts,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 16.sp
-                )
+                if(typeVisible) {
+                    Text(
+                        text = if (infoMedia.media_type.lowercase() == "movie")
+                            stringResource(id = R.string.movie).uppercase()
+                        else
+                            stringResource(id = R.string.tv).uppercase(),
+                        modifier = Modifier
+                            .padding(dimensionResource(id = R.dimen.dp_8)),
+                        textAlign = TextAlign.Center,
+                        fontFamily = fonts,
+                        fontWeight = FontWeight.Medium,
+                        fontSize = 16.sp
+                    )
+                }
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier

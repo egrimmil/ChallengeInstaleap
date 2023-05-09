@@ -6,7 +6,7 @@ data class DetailMediaTvDto(
     @SerializedName("adult")
     var adult: Boolean = false,
     @SerializedName("backdrop_path")
-    var backdrop_path: String = "",
+    var backdrop_path: String? = "",
     @SerializedName("created_by")
     var created_by: List<CreateMediaTvDto> = emptyList(),
     @SerializedName("episode_run_time")
@@ -139,5 +139,5 @@ data class SeasonMediaTvDto(
     @SerializedName("episode_count")
     var episode_count: Int = 0,
     @SerializedName("poster_path")
-    var poster_path: String = "",
+    var poster_path: String? = "",
 )
