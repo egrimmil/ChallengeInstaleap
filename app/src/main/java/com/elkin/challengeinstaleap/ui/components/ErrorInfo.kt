@@ -2,6 +2,7 @@ package com.elkin.challengeinstaleap.ui.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
@@ -13,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.elkin.challengeinstaleap.R
@@ -27,7 +29,7 @@ fun ErrorInfo(
     messageColor: Color,
 ) {
     Column(
-        modifier,
+        modifier.padding(dimensionResource(id = R.dimen.dp_12)),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Icon(
@@ -48,7 +50,8 @@ fun ErrorInfo(
             color = messageColor,
             fontFamily = fonts,
             fontWeight = FontWeight.Medium,
-            fontSize = 18.sp
+            fontSize = 18.sp,
+            textAlign = TextAlign.Center
         )
     }
 }

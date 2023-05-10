@@ -2,7 +2,6 @@ package com.elkin.challengeinstaleap.domain.use_case
 
 import android.util.Log
 import com.elkin.challengeinstaleap.core.util.Resource
-import com.elkin.challengeinstaleap.data.mapper.toMedia
 import com.elkin.challengeinstaleap.data.remote.service.ResponseWrapper
 import com.elkin.challengeinstaleap.domain.model.Media
 import com.elkin.challengeinstaleap.domain.repository.DashboardRepository
@@ -30,7 +29,7 @@ class DashboardUseCase @Inject constructor(
             is ResponseWrapper.Success -> {
                 Log.e("response_trendsUse", Gson().toJson(resp.data))
                 if (resp.data.result != null) {
-                    trends = resp.data.result!!.results.map { it.toMedia() }.toMutableList()
+                    trends = resp.data.result!!
                     emit(Resource.Loading(loading = false))
                     emit(Resource.Success(data = trends))
                 } else {

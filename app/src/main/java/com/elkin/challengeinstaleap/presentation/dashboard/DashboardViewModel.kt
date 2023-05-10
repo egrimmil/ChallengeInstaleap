@@ -34,10 +34,6 @@ class DashboardViewModel @Inject constructor(
     var state by mutableStateOf(DashboardState())
         private set
 
-    init {
-        onEvent(DashboardEvents.GetTrending)
-    }
-
     fun onEvent(event: DashboardEvents) {
         when (event) {
             is DashboardEvents.GetTrending -> {

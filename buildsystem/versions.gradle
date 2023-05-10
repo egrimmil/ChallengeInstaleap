@@ -39,5 +39,8 @@ ext.libraries = [
         okhttp_intercept    : "5.0.0-alpha.11",
 
         //Retrofit
-        retrofit             : "2.9.0"
+        retrofit             : "2.9.0",
+
+        //Room
+        room                : "2.5.1"
 ]
