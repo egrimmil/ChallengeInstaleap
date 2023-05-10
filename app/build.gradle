@@ -1,18 +1,24 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
+apply from: "$rootProject.projectDir/buildsystem/versions.gradle"
+def configuration = ext.configuration
+def libraries = ext.libraries
+
 android {
-    namespace 'com.elkin.challengeinstalep'
-    compileSdk 33
+    namespace 'com.elkin.challengeinstaleap'
+    compileSdk configuration.compileSdk
 
     defaultConfig {
-        applicationId "com.elkin.challengeinstalep"
-        minSdk 24
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        applicationId configuration.applicationId
+        minSdk configuration.minSdk
+        targetSdk configuration.targetSdk
+        versionCode configuration.versionCode
+        versionName configuration.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -37,7 +43,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion '1.2.0'
+        kotlinCompilerExtensionVersion '1.4.3'
     }
     packagingOptions {
         resources {
@@ -48,16 +54,40 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
-    implementation 'androidx.activity:activity-compose:1.3.1'
-    implementation "androidx.compose.ui:ui:$compose_ui_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
-    implementation 'androidx.compose.material:material:1.2.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_ui_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_ui_version"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_ui_version"
+    implementation "androidx.core:core-ktx:$libraries.ktx"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$libraries.lifecycle_runtime"
+    implementation "androidx.activity:activity-compose:$libraries.activity_compose"
+    implementation "androidx.compose.ui:ui:$libraries.compose_ui_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$libraries.compose_ui_version"
+    implementation "androidx.compose.material:material:$libraries.material"
+    implementation "androidx.constraintlayout:constraintlayout-compose:$libraries.constraint_compose"
+    testImplementation "junit:junit:$libraries.testImplJunit"
+    androidTestImplementation "androidx.test.ext:junit:$libraries.andTestImplJunit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$libraries.andTestImplEspresso"
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$libraries.compose_ui_version"
+    debugImplementation "androidx.compose.ui:ui-tooling:$libraries.compose_ui_version"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$libraries.compose_ui_version"
+
+    //Navigation
+    implementation "androidx.navigation:navigation-compose:$libraries.navigation"
+    //Lifecycle
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$libraries.lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$libraries.lifecycle_version"
+    //Glide
+    implementation "com.github.skydoves:landscapist-glide:$libraries.glide"
+    //Hilt
+    implementation "com.google.dagger:hilt-android:$libraries.hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$libraries.hilt"
+    implementation "androidx.hilt:hilt-navigation-compose:$libraries.hilt_navigation"
+    //OkHttp
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:$libraries.okhttp"))
+    implementation "com.squareup.okhttp3:okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$libraries.okhttp_intercept"
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$libraries.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$libraries.retrofit"
+}
+
+kapt {
+    correctErrorTypes = true
 }

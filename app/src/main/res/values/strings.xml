@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">ChallengeInstalep</string>
+    <string name="app_name">ChallengeInstaleap</string>
+    <!-- Errors -->
+    <string name="error_network">Por favor revisa tu conexión de internet.</string>
+    <string name="error_server">No se pudo obtener la información, por favor intenta más tarde.</string>
+    <!-- Commons -->
+    <string name="movies">Películas</string>
+    <string name="tvs">Series de TV</string>
+    <string name="movie">Película</string>
+    <string name="tv">Serie de TV</string>
+    <string name="info">Información</string>
+    <string name="season">Temporada</string>
+    <string name="seasons">Temporadas</string>
+    <string name="loading">¡Cargando Información,\npor favor espere!</string>
+    <!-- List Media -->
+    <string name="error_load_genres">No se obtivieron las categorias</string>
+    <string name="error_load_list_by_genres">No se encontro información en esta categoria</string>
 </resources>
