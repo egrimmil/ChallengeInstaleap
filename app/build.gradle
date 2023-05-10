@@ -86,6 +86,10 @@ dependencies {
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$libraries.retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$libraries.retrofit"
+    //Room
+    implementation "androidx.room:room-runtime:$libraries.room"
+    implementation "androidx.room:room-ktx:$libraries.room"
+    kapt "androidx.room:room-compiler:$libraries.room"
 }
 
 kapt {

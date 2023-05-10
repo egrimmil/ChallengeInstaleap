@@ -33,7 +33,7 @@ class ListMediaUseCase @Inject constructor(
                 is ResponseWrapper.Success -> {
                     Log.e("response_PopularUse", Gson().toJson(resp.data))
                     if (resp.data.result != null) {
-                        listPopular = resp.data.result!!.results.map { it.toMedia() }.toMutableList()
+                        listPopular = resp.data.result!!
                         emit(Resource.Loading(loading = false))
                         emit(Resource.Success(data = listPopular))
                     } else {
@@ -60,7 +60,7 @@ class ListMediaUseCase @Inject constructor(
                 is ResponseWrapper.Success -> {
                     Log.e("response_GenresUse", Gson().toJson(resp.data))
                     if (resp.data.result != null) {
-                        listGenre = resp.data.result!!.genres.map{ it.toGenresMedia() }.toMutableList()
+                        listGenre = resp.data.result!!
                         emit(Resource.Loading(loading = false))
                         emit(Resource.Success(data = listGenre))
                     } else {

@@ -7,13 +7,18 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import androidx.navigation.NavController
 import com.elkin.challengeinstaleap.R
 import com.elkin.challengeinstaleap.core.util.UiEvent
+import com.elkin.challengeinstaleap.presentation.list.ListMediaEvents
 import com.elkin.challengeinstaleap.ui.components.*
 import com.elkin.challengeinstaleap.ui.theme.red
 import com.elkin.challengeinstaleap.ui.theme.white
@@ -24,6 +29,7 @@ fun DashboardScreen(
     viewModel: DashboardViewModel = hiltViewModel()
 ) {
     val state = viewModel.state
+    val lifecycleOwner = LocalLifecycleOwner.current
 
     LaunchedEffect(true) {
         viewModel.uiEvent.collect { event ->
@@ -33,6 +39,23 @@ fun DashboardScreen(
                 }
                 else -> Unit
             }
+        }
+    }
+
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            when (event) {
+                Lifecycle.Event.ON_RESUME -> {
+                    viewModel.onEvent(
+                        DashboardEvents.GetTrending
+                    )
+                }
+                else -> Unit
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
         }
     }
 

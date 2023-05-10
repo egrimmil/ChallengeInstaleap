@@ -6,7 +6,7 @@ data class MediaDto(
     @SerializedName("adult")
     var adult: Boolean = false,
     @SerializedName("backdrop_path")
-    var backdrop_path: String = "",
+    var backdrop_path: String? = "",
     @SerializedName("id")
     var id: Int = 0,
     @SerializedName("title", alternate = ["name"])

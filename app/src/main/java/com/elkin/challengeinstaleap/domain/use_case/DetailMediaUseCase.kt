@@ -2,7 +2,6 @@ package com.elkin.challengeinstaleap.domain.use_case
 
 import android.util.Log
 import com.elkin.challengeinstaleap.core.util.Resource
-import com.elkin.challengeinstaleap.data.mapper.toDetailMedia
 import com.elkin.challengeinstaleap.data.remote.service.ResponseWrapper
 import com.elkin.challengeinstaleap.domain.model.DetailMedia
 import com.elkin.challengeinstaleap.domain.model.Media
@@ -31,7 +30,7 @@ class DetailMediaUseCase @Inject constructor(
                     Log.e("response_detailMvUse", Gson().toJson(resp.data))
                     if (resp.data.result != null) {
                         emit(Resource.Loading(loading = false))
-                        emit(Resource.Success(data = resp.data.result!!.toDetailMedia()))
+                        emit(Resource.Success(data = resp.data.result))
                     }else{
                         emit(Resource.Loading(loading = false))
                         emit(Resource.Success(data = DetailMedia()))
@@ -56,7 +55,7 @@ class DetailMediaUseCase @Inject constructor(
                     Log.e("response_detailTVUse", Gson().toJson(resp.data))
                     if (resp.data.result != null) {
                         emit(Resource.Loading(loading = false))
-                        emit(Resource.Success(data = resp.data.result!!.toDetailMedia()))
+                        emit(Resource.Success(data = resp.data.result))
                     }else{
                         emit(Resource.Loading(loading = false))
                         emit(Resource.Success(data = DetailMedia()))
