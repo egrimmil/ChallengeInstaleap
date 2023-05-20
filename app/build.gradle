@@ -90,6 +90,8 @@ dependencies {
     implementation "androidx.room:room-runtime:$libraries.room"
     implementation "androidx.room:room-ktx:$libraries.room"
     kapt "androidx.room:room-compiler:$libraries.room"
+
+    androidTestImplementation "io.mockk:mockk:$libraries.mockk"
 }
 
 kapt {

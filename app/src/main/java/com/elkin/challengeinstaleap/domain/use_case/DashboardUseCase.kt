@@ -1,11 +1,9 @@
 package com.elkin.challengeinstaleap.domain.use_case
 
-import android.util.Log
 import com.elkin.challengeinstaleap.core.util.Resource
 import com.elkin.challengeinstaleap.data.remote.service.ResponseWrapper
 import com.elkin.challengeinstaleap.domain.model.Media
 import com.elkin.challengeinstaleap.domain.repository.DashboardRepository
-import com.google.gson.Gson
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -27,9 +25,8 @@ class DashboardUseCase @Inject constructor(
                 emit(Resource.Error(message = resp.message))
             }
             is ResponseWrapper.Success -> {
-                Log.e("response_trendsUse", Gson().toJson(resp.data))
                 if (resp.data.result != null) {
-                    trends = resp.data.result!!
+                    trends = resp.data.result ?: mutableListOf()
                     emit(Resource.Loading(loading = false))
                     emit(Resource.Success(data = trends))
                 } else {

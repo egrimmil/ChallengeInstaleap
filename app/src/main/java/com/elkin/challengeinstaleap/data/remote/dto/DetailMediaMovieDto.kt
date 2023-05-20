@@ -8,7 +8,7 @@ data class DetailMediaMovieDto(
     @SerializedName("backdrop_path")
     var backdrop_path: String = "",
     @SerializedName("belongs_to_collection")
-    var belongs_to_collection: CollectionMediaMovieDto = CollectionMediaMovieDto(),
+    var belongs_to_collection: CollectionMediaMovieDto? = CollectionMediaMovieDto(),
     @SerializedName("budget")
     var budget: Long = 0,
     @SerializedName("genres")

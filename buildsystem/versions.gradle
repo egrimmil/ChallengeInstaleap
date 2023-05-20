@@ -15,6 +15,7 @@ ext.libraries = [
         compose_ui_version  : "1.2.0",
         material            : "1.4.3",
         constraint_compose  : "1.0.1",
+        compose_ui_tooling  : "1.4.3",
 
         //Testing
         testImplJunit       : "4.13.2",
@@ -42,5 +43,8 @@ ext.libraries = [
         retrofit             : "2.9.0",
 
         //Room
-        room                : "2.5.1"
+        room                : "2.5.1",
+
+        //MockK
+        mockk               : "1.12.2"
 ]
